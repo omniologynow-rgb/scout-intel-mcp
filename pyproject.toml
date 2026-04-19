@@ -31,6 +31,7 @@ dependencies = [
     "wikipedia-api>=0.6",
     "pydantic>=2.6",
     "python-dotenv>=1.0",
+    "redis>=5.0",
 ]
 
 [project.optional-dependencies]
@@ -38,9 +39,9 @@ server = ["uvicorn>=0.25", "fastapi>=0.110"]
 dev = ["pytest>=8.0", "pytest-asyncio>=0.23", "black>=24.0", "ruff>=0.3"]
 
 [project.urls]
-Homepage = "https://github.com/omniologynow-rgb/scoutMCP"
-Repository = "https://github.com/omniologynow-rgb/scoutMCP"
-Issues = "https://github.com/omniologynow-rgb/scoutMCP/issues"
+Homepage = "https://github.com/omniologynow-rgb/scout-intel-mcp"
+Repository = "https://github.com/omniologynow-rgb/scout-intel-mcp"
+Issues = "https://github.com/omniologynow-rgb/scout-intel-mcp/issues"
 
 [project.scripts]
 scout-intel-mcp = "scout_mcp.mcp_server:mcp.run"
