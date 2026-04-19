@@ -2,21 +2,27 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-# Install system deps
+# Install ALL system deps for building Python C extensions
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    gcc libxml2-dev libxslt1-dev && \
-    rm -rf /var/lib/apt/lists/*
+    gcc g++ \
+    libxml2-dev libxslt1-dev \
+    libffi-dev libssl-dev \
+    pkg-config \
+    && rm -rf /var/lib/apt/lists/*
 
-# Ensure setuptools available (needed by legacy deps)
-RUN pip install --no-cache-dir "setuptools>=65"
+# Upgrade pip + install build tools
+RUN pip install --no-cache-dir --upgrade pip setuptools wheel hatchling
 
-# Copy and install Python deps
+# Install dependencies first (binary wheels where available)
+COPY requirements.txt .
+RUN pip install --no-cache-dir --prefer-binary -r requirements.txt
+
+# Copy source and install package only (deps already installed)
 COPY pyproject.toml .
 COPY src/ src/
-RUN pip install --no-cache-dir .
+RUN pip install --no-cache-dir --no-deps .
 
-# MCPize injects env vars at runtime — no .env file needed
+# MCPize injects env vars at runtime — no .env needed
 
-EXPOSE 8001
-
-CMD ["python", "-m", "scout_mcp.mcp_server"]
+# stdio transport (MCPize wraps with mcp-proxy for HTTP)
+CMD ["scout-intel-mcp"]
