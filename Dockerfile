@@ -12,8 +12,7 @@ COPY pyproject.toml .
 COPY src/ src/
 RUN pip install --no-cache-dir .
 
-# Copy config
-COPY .env.example .env
+# MCPize injects env vars at runtime — no .env file needed
 
 EXPOSE 8001
 
