@@ -1,0 +1,49 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "scout-intel-mcp"
+version = "1.0.1"
+description = "Business & market intelligence MCP server for AI agents — 7 tools, 8 data sources, structured JSON with confidence scores"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "AGPL-3.0"}
+authors = [{name = "Scout MCP"}]
+keywords = ["mcp", "ai", "business-intelligence", "market-research", "competitive-analysis", "company-research", "trend-analysis", "model-context-protocol"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: GNU Affero General Public License v3",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Office/Business",
+]
+dependencies = [
+    "fastmcp>=2.0",
+    "httpx>=0.25",
+    "beautifulsoup4>=4.12",
+    "lxml>=5.0",
+    "duckduckgo-search>=4.0",
+    "newsapi-python>=0.2",
+    "wikipedia-api>=0.6",
+    "pydantic>=2.6",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+server = ["uvicorn>=0.25", "fastapi>=0.110"]
+dev = ["pytest>=8.0", "pytest-asyncio>=0.23", "black>=24.0", "ruff>=0.3"]
+
+[project.urls]
+Homepage = "https://github.com/omniologynow-rgb/scoutMCP"
+Repository = "https://github.com/omniologynow-rgb/scoutMCP"
+Issues = "https://github.com/omniologynow-rgb/scoutMCP/issues"
+
+[project.scripts]
+scout-intel-mcp = "scout_mcp.mcp_server:mcp.run"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/scout_mcp"]
