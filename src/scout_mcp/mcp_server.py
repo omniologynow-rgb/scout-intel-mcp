@@ -143,8 +143,8 @@ def main():
     port = int(os.environ.get("PORT", "8080"))
     host = os.environ.get("MCP_HOST", "0.0.0.0")
 
-    print(f"[scout-mcp] Starting with transport={transport}, host={host}, port={port}", flush=True)
-    print(f"[scout-mcp] FastMCP version: {FastMCP.__module__}", flush=True)
+    print(f"[scout-mcp] Starting with transport={transport}, host={host}, port={port}", file=sys.stderr, flush=True)
+    print(f"[scout-mcp] FastMCP version: {FastMCP.__module__}", file=sys.stderr, flush=True)
 
     if transport in ("streamable-http", "sse"):
         mcp.run(transport=transport, host=host, port=port)
