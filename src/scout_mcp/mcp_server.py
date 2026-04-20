@@ -1,6 +1,6 @@
 """Scout MCP — FastMCP Server Entry Point.
 
-This is the main MCP server that registers all 6 intelligence tools
+This is the main MCP server that registers all 7 intelligence tools
 for use by AI agents via Claude Desktop, Cursor, VS Code, etc.
 """
 
@@ -118,7 +118,24 @@ async def scout_batch(queries: list[dict], max_parallel: int = 5) -> dict:
     return await _scout_batch(queries=queries, max_parallel=max_parallel)
 
 
-# Entry point for: fastmcp dev src/scout_mcp/mcp_server.py
-# or: python -m scout_mcp.mcp_server
+# ── Entry Point ───────────────────────────────────────────────────
+
+def main():
+    """Run the MCP server.
+
+    Transport is controlled by MCP_TRANSPORT env var:
+      - "streamable-http" → hosted deployment (MCPize, etc.)
+      - "stdio" → local usage (Claude Desktop, Cursor, VS Code)
+    """
+    import os
+    transport = os.environ.get("MCP_TRANSPORT", "stdio")
+    if transport in ("streamable-http", "sse"):
+        host = os.environ.get("MCP_HOST", "0.0.0.0")
+        port = int(os.environ.get("PORT", "8080"))
+        mcp.run(transport=transport, host=host, port=port)
+    else:
+        mcp.run()
+
+
 if __name__ == "__main__":
-    mcp.run()
+    main()

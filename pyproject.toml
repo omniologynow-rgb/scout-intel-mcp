@@ -44,7 +44,7 @@ Repository = "https://github.com/omniologynow-rgb/scout-intel-mcp"
 Issues = "https://github.com/omniologynow-rgb/scout-intel-mcp/issues"
 
 [project.scripts]
-scout-intel-mcp = "scout_mcp.mcp_server:mcp.run"
+scout-intel-mcp = "scout_mcp.mcp_server:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/scout_mcp"]
