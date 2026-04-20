@@ -4,16 +4,26 @@ This is the main MCP server that registers all 7 intelligence tools
 for use by AI agents via Claude Desktop, Cursor, VS Code, etc.
 """
 
+import logging
+import sys
+
 from fastmcp import FastMCP
 
-from .tools.company import scout_company as _scout_company
-from .tools.competitors import scout_competitors as _scout_competitors
-from .tools.trends import scout_trends as _scout_trends
-from .tools.market import scout_market as _scout_market
-from .tools.product import scout_product as _scout_product
-from .tools.person import scout_person as _scout_person
-from .tools.batch import scout_batch as _scout_batch
-from .auth import check_rate_limit, is_pro_tier
+logger = logging.getLogger("scout_mcp")
+
+# -- Import tools with error handling ----------------------------------------
+try:
+    from .tools.company import scout_company as _scout_company
+    from .tools.competitors import scout_competitors as _scout_competitors
+    from .tools.trends import scout_trends as _scout_trends
+    from .tools.market import scout_market as _scout_market
+    from .tools.product import scout_product as _scout_product
+    from .tools.person import scout_person as _scout_person
+    from .tools.batch import scout_batch as _scout_batch
+    from .auth import check_rate_limit, is_pro_tier
+except ImportError as e:
+    print(f"[scout-mcp] FATAL import error: {e}", file=sys.stderr, flush=True)
+    raise
 
 mcp = FastMCP("Scout MCP")
 
@@ -95,7 +105,6 @@ async def scout_person(name: str, company: str | None = None) -> dict:
     return await _scout_person(name=name, company=company)
 
 
-
 @mcp.tool()
 async def scout_batch(queries: list[dict], max_parallel: int = 5) -> dict:
     """Run multiple scout queries in parallel. Perfect for competitive
@@ -125,13 +134,19 @@ def main():
 
     Transport is controlled by MCP_TRANSPORT env var:
       - "streamable-http" → hosted deployment (MCPize, etc.)
+      - "sse" → legacy SSE deployment
       - "stdio" → local usage (Claude Desktop, Cursor, VS Code)
     """
     import os
+
     transport = os.environ.get("MCP_TRANSPORT", "stdio")
+    port = int(os.environ.get("PORT", "8080"))
+    host = os.environ.get("MCP_HOST", "0.0.0.0")
+
+    print(f"[scout-mcp] Starting with transport={transport}, host={host}, port={port}", flush=True)
+    print(f"[scout-mcp] FastMCP version: {FastMCP.__module__}", flush=True)
+
     if transport in ("streamable-http", "sse"):
-        host = os.environ.get("MCP_HOST", "0.0.0.0")
-        port = int(os.environ.get("PORT", "8080"))
         mcp.run(transport=transport, host=host, port=port)
     else:
         mcp.run()

@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "scout-intel-mcp"
-version = "1.0.1"
+version = "1.0.2"
 description = "Business & market intelligence MCP server for AI agents — 7 tools, 8 data sources, structured JSON with confidence scores"
 readme = "README.md"
 requires-python = ">=3.11"
@@ -22,7 +22,7 @@ classifiers = [
     "Topic :: Office/Business",
 ]
 dependencies = [
-    "fastmcp>=2.0",
+    "fastmcp>=3.0",
     "httpx>=0.25",
     "beautifulsoup4>=4.12",
     "lxml>=5.0",
