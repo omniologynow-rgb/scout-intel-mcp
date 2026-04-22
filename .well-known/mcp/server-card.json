@@ -1,0 +1,205 @@
+{
+  "serverInfo": {
+    "name": "Scout Intel MCP",
+    "version": "1.0.2"
+  },
+  "tools": [
+    {
+      "name": "scout_company",
+      "description": "Get structured intelligence on any company. Returns: industry, funding, tech stack, competitors, recent news, key people.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Company name (e.g., \"Stripe\", \"OpenAI\")"
+          },
+          "domain": {
+            "type": "string",
+            "description": "Optional company domain (e.g., \"stripe.com\"). Auto-detected if not provided."
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "scout_market",
+      "description": "Research any market or industry. Returns: market size, growth rate, CAGR, key players, trends, risks.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "Market/industry to research (e.g., \"AI SaaS\", \"electric vehicles\")"
+          },
+          "depth": {
+            "type": "string",
+            "description": "\"summary\" for quick overview, \"detailed\" for deeper analysis",
+            "default": "summary"
+          }
+        },
+        "required": [
+          "query"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "scout_competitors",
+      "description": "Find and analyze competitors for any company or product. Returns: list of competitors with positioning, pricing, strengths, weaknesses.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "company_or_product": {
+            "type": "string",
+            "description": "Name of company or product (e.g., \"Notion\", \"Figma\")"
+          },
+          "max": {
+            "type": "integer",
+            "description": "Maximum number of competitors to return (default 10)",
+            "default": 10
+          }
+        },
+        "required": [
+          "company_or_product"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "scout_trends",
+      "description": "Track trends and sentiment on any topic. Returns: sentiment score, trending direction, key developments, related topics.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "topic": {
+            "type": "string",
+            "description": "Topic to track (e.g., \"generative AI\", \"remote work\")"
+          },
+          "timeframe": {
+            "type": "string",
+            "description": "Time window \u2014 \"1d\", \"7d\", \"30d\", \"1y\" (default \"7d\")",
+            "default": "7d"
+          }
+        },
+        "required": [
+          "topic"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "scout_product",
+      "description": "Get intelligence on any product. Returns: category, pricing, ratings, features, alternatives, recent updates.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Product name (e.g., \"Slack\", \"Linear\", \"Vercel\")"
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "scout_person",
+      "description": "Get intelligence on a public figure. PRO tier only. Returns: current role, background, social profiles, recent activity, achievements.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Person's name (e.g., \"Sam Altman\", \"Jensen Huang\")"
+          },
+          "company": {
+            "type": "string",
+            "description": "Optional company context (e.g., \"OpenAI\")"
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    },
+    {
+      "name": "scout_batch",
+      "description": "Run multiple scout queries in parallel. Perfect for competitive landscape analysis and bulk research. Returns: results array, comparison table, timing, overall grade.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "queries": {
+            "type": "array",
+            "description": "List of {\"tool\": \"company|market|competitors|trends|product\", \"params\": {...}} objects",
+            "items": {
+              "type": "object",
+              "properties": {
+                "tool": {
+                  "type": "string"
+                },
+                "params": {
+                  "type": "object"
+                }
+              },
+              "required": [
+                "tool",
+                "params"
+              ]
+            }
+          },
+          "max_parallel": {
+            "type": "integer",
+            "description": "Max concurrent queries (default 5)",
+            "default": 5
+          }
+        },
+        "required": [
+          "queries"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      }
+    }
+  ]
+}
