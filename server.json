@@ -3,12 +3,12 @@
   "name": "io.github.omniologynow-rgb/scout-intel-mcp",
   "title": "Scout Intel MCP",
   "description": "Web intelligence MCP server \u2014 SERP, competitor, market & keyword analysis for AI agents",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "packages": [
     {
       "registryType": "pypi",
       "identifier": "scout-intel-mcp",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "transport": {
         "type": "stdio"
       }
