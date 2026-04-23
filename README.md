@@ -1,3 +1,4 @@
+<!-- mcp-name: io.github.omniologynow-rgb/scout-intel-mcp -->
 <p align="center">
   <strong>Scout MCP</strong><br>
   Business & Market Intelligence for AI Agents
