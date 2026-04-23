@@ -16,7 +16,7 @@
   ],
   "remotes": [
     {
-      "transportType": "streamable-http",
+      "type": "streamable-http",
       "url": "https://scout-intel.mcpize.run"
     }
   ]
