@@ -10,6 +10,9 @@
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="MIT License"></a>
   <img src="https://img.shields.io/badge/tools-6-cyan.svg" alt="6 Tools">
   <img src="https://img.shields.io/badge/data_sources-5+-orange.svg" alt="5+ Data Sources">
+  <a href="https://pypi.org/project/scout-intel-mcp/"><img src="https://img.shields.io/pypi/v/scout-intel-mcp?color=%2334D058&label=pypi" alt="PyPI version"></a>
+  <a href="https://pepy.tech/project/scout-intel-mcp"><img src="https://static.pepy.tech/badge/scout-intel-mcp/month" alt="PyPI Downloads/month"></a>
+  <a href="https://mcpize.com/mcp/scout-intel"><img src="https://img.shields.io/badge/MCPize-blue?label=marketplace" alt="MCPize"></a>
 </p>
 
 ---
@@ -646,4 +649,10 @@ MIT
 <p align="center">
   Built with FastMCP, httpx, BeautifulSoup4, Pydantic<br>
   <em>Scout MCP v0.1.0</em>
+</p>
+
+---
+
+<p align="center">
+  🚀 Also check out <strong><a href="https://github.com/omniologynow-rgb/profitspot-mcp">ProfitSpot MCP</a></strong> — cross-chain DeFi intelligence for AI agents. Risk-scored yields, Monte Carlo simulations, whale tracking across 86 chains.
 </p>
