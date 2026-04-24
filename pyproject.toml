@@ -5,12 +5,12 @@ build-backend = "hatchling.build"
 [project]
 name = "scout-intel-mcp"
 version = "1.0.2"
-description = "Business & market intelligence MCP server for AI agents — 7 tools, 8 data sources, structured JSON with confidence scores"
+description = "The Google for AI agents — structured business intelligence, competitive analysis & market research. 7 tools, 5+ data sources, confidence-scored JSON."
 readme = "README.md"
 requires-python = ">=3.11"
 license = {text = "AGPL-3.0"}
 authors = [{name = "Scout MCP"}]
-keywords = ["mcp", "ai", "business-intelligence", "market-research", "competitive-analysis", "company-research", "trend-analysis", "model-context-protocol"]
+keywords = ["mcp", "ai", "business-intelligence", "market-research", "competitive-analysis", "company-research", "trend-analysis", "model-context-protocol", "google-for-ai"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
