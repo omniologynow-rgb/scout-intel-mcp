@@ -5,12 +5,20 @@ build-backend = "hatchling.build"
 [project]
 name = "scout-intel-mcp"
 version = "1.0.2"
-description = "The Google for AI agents — structured business intelligence, competitive analysis & market research. 7 tools, 5+ data sources, confidence-scored JSON."
+description = "The Google for AI agents — ask Claude to research any company, analyze competitors, track market trends, and score data quality. 6 intelligence tools, 5+ data sources (DuckDuckGo, NewsAPI, Wikipedia, web scraping), confidence-scored structured JSON. pip install scout-intel-mcp"
 readme = "README.md"
 requires-python = ">=3.11"
 license = {text = "AGPL-3.0"}
 authors = [{name = "Scout MCP"}]
-keywords = ["mcp", "ai", "business-intelligence", "market-research", "competitive-analysis", "company-research", "trend-analysis", "model-context-protocol", "google-for-ai"]
+keywords = [
+    "mcp", "mcp-server", "model-context-protocol",
+    "business-intelligence", "market-research", "competitive-analysis",
+    "company-research", "trend-analysis", "ai-agent", "claude",
+    "cursor", "llm-tools", "web-scraping", "data-extraction",
+    "competitor-tracking", "industry-analysis", "product-intelligence",
+    "google-for-ai", "newsapi", "structured-data", "due-diligence",
+    "copilot", "market-sizing", "sentiment-analysis"
+]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
