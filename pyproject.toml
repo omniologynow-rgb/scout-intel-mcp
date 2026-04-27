@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "scout-intel-mcp"
-version = "1.0.2"
+version = "1.0.3"
 description = "The Google for AI agents — ask Claude to research any company, analyze competitors, track market trends, and score data quality. 6 intelligence tools, 5+ data sources (DuckDuckGo, NewsAPI, Wikipedia, web scraping), confidence-scored structured JSON. pip install scout-intel-mcp"
 readme = "README.md"
 requires-python = ">=3.11"
