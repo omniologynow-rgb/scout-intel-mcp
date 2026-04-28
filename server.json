@@ -3,12 +3,12 @@
   "name": "io.github.omniologynow-rgb/scout-intel-mcp",
   "title": "Scout Intel MCP \u2014 The Google for AI Agents",
   "description": "The Google for AI agents \u2014 structured business intelligence, competitive analysis, market research, and trend tracking. 6 tools, 5+ data sources, confidence-scored JSON. Give Claude the power to research any company, market, or competitor in seconds. Free tier, no API key needed. Install: pip install scout-intel-mcp",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "packages": [
     {
       "registryType": "pypi",
       "identifier": "scout-intel-mcp",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "transport": {
         "type": "stdio"
       }
